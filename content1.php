@@ -29,33 +29,59 @@
 
 	<?php
 
-		if (isset($_GET['videoName']) && $_GET['videoName'] == null)
-		{
-		print_r('Human, you must enter a video name. ');
-		?>
+		if (isset($_GET['videoName']) && $_GET['videoName'] == NULL 
+			&& isset($_GET['category']) && $_GET['category'] == null 
+			&& isset($_GET['length']) && $_GET['length'] == null)
 
-		// <script language = "JavaScript">
-		// 	alert('Human, you must enter a video name. ')
-		 </script>
-		 
-			<br>
-	    	<a href="Interface.php">go back</a>
-			<br>
-		<?php
-		}
-
-		if (isset($_GET['category']) && $_GET['category'] == null)
 		{
-			print_r('Human, you must enter a category.');
 			?>
+
+			<script language = "JavaScript">
+			// 	alert('Human, you must enter a video name. ')
+			</script>
+
 				<br>
 		    	<a href="Interface.php">go back</a>
 				<br>
 			<?php
-		}		
-	?>
+		}	
 
-<?php
+		else if (isset($_GET['videoName']) && $_GET['videoName'] != NULL 
+		&& isset($_GET['category']) && $_GET['category'] != null 
+		&& isset($_GET['length']) && $_GET['length'] != null)
+		{
+			$mysqli2 = new mysqli("oniddb.cws.oregonstate.edu", "dinhd-db", $myPassword, "dinhd-db");
+			if ($mysqli2->connect_errno) {
+			    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+			}
+			else
+			{
+				echo "Successfully connected to database <br>";
+			}
+
+			if (!($stmt2 = $mysqli2->prepare("INSERT INTO videoStore(id, name) VALUES (?)"))) 
+				//500,"  $_GET['videoName'] "," $_GET['category'] ", " $_GET['length'] "," 0 ")"))) 
+			{
+			    echo "Prepare failed: (" . $mysqli2->errno . ") " . $mysqli2->error;
+			}
+			$nameInsert = $_GET['videoName'];
+			$categoryInsert = $_GET['category'];
+			$lengthInsert = $_GET['length'];
+		
+			
+
+			$checkOutStatus = 22;
+			if (!$stmt2->bind_param("i", $nameInsert)) {
+			    echo "Binding parameters failed: (" . $stmt2->errno . ") " . $stmt2->error;
+			}
+
+			if (!$stmt2->execute()) {
+			    echo "Execute failed: (" . $stmt2->errno . ") " . $stmt2->error;
+			}
+		}
+	
+
+
 	//these prepared statements were copied from http://us2.php.net/manual/en/mysqli.quickstart.prepared-statements.php
 	// Login to database
 	$mysqli = new mysqli("oniddb.cws.oregonstate.edu", "dinhd-db", $myPassword, "dinhd-db");
