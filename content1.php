@@ -19,7 +19,7 @@
 		<legend>Human, enter a video you wish to add: </legend>
 	    Video Name:  <input type="text" maxlength = 255 name="videoName" /> <br />
 	    Category: <input type ="text" maxlength = 255 name = "category"  /> <br />
-	    Length: <input type = "number" min = "0" step = "1" name = "length" /> <br />
+	    Length: <input type = "number" step = "1" min = "1" name = "length" /> <br />
     	<input type="submit" name = "Add Video"/>
 	</form>
 </section>
@@ -30,23 +30,21 @@
 	<?php
 
 		//Checks to make sure that that all values have been entered
-		if (isset($_GET['videoName']) && $_GET['videoName'] == NULL 
-			&& isset($_GET['category']) && $_GET['category'] == null 
-			&& isset($_GET['length']) && $_GET['length'] == null)
+		if (isset($_GET['videoName']) && $_GET['videoName'] == NULL )
 
 		{
 			?>
-
-				<br>
-		    	<a href="Interface.php">go back</a>
-				<br>
+				<script language="JavaScript">
+					alert("Human, you must enter a name.")
+				</script>
 			<?php
 		}	
 
+
 		//If there were values entered then the values will be added to the database.
 		else if (isset($_GET['videoName']) && $_GET['videoName'] != NULL 
-		&& isset($_GET['category']) && $_GET['category'] != null 
-		&& isset($_GET['length']) && $_GET['length'] != null)
+		&& isset($_GET['category'])
+		&& isset($_GET['length']) )
 		{
 			$mysqli2 = new mysqli("oniddb.cws.oregonstate.edu", "dinhd-db", $myPassword, "dinhd-db");
 			if ($mysqli2->connect_errno) {
@@ -64,6 +62,10 @@
 			}
 			$nameInsert = $_GET['videoName'];
 			$categoryInsert = $_GET['category'];
+			if ($categoryInsert == NULL)
+			{
+				$categoryInsert = "Other";
+			}
 			$lengthInsert = $_GET['length'];
 		
 	
