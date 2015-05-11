@@ -37,10 +37,6 @@
 		{
 			?>
 
-			<script language = "JavaScript">
-			// 	alert('Human, you must enter a video name. ')
-			</script>
-
 				<br>
 		    	<a href="Interface.php">go back</a>
 				<br>

@@ -1,0 +1,3 @@
+Start: Thu, 7 May 2015 14:24:58 -0700
+End: Thu, 7 May 2015 23:05:52 -0700
+Tasks: Started Assignment, Finished output now need to work on inputs, before I screw it up more,  Finished inputs and filtering
