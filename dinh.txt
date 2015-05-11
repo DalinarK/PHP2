@@ -1,3 +1,7 @@
+Start: Sun, 10 May 2015 19:05:22 -0700
+End: Sun, 10 May 2015 20:37:00 -0700
+Tasks: Added text log at 1900 now adding delete all button, Finished adding delete, now on to testing, finished with testing
+
 Start: Thu, 7 May 2015 14:24:58 -0700
 End: Thu, 7 May 2015 23:05:52 -0700
 Tasks: Started Assignment, Finished output now need to work on inputs, before I screw it up more,  Finished inputs and filtering
