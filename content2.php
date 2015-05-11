@@ -33,14 +33,31 @@
 		echo "deleting ID: " . $_GET['delete'] . "<br>";
 		$queryObject = "DELETE FROM videoStore WHERE id=1";
 
+		if (mysqli_query($mysqli, "DELETE FROM videoStore WHERE id=". $_GET['delete']) === TRUE) {
+	    echo "Record deleted successfully";
+		} else {
+	    echo "Error deleting record: " . $mysqli->error;
+		}
+
+	}
+
+	if (isset($_GET['deleteAll']) && $_GET['deleteAll'] != null)
+	{
+		echo "Deleting all records <br>";
+		$queryObject = "DELETE FROM videoStore";
+
+	
+
+		if (mysqli_query($mysqli, "DELETE FROM videoStore") === TRUE) {
+	    echo "All records deleted";
+		} else {
+	    echo "Error deleting all records: " . $mysqli->error;
+		}
 	}
 
 
-	if (mysqli_query($mysqli, "DELETE FROM videoStore WHERE id=". $_GET['delete']) === TRUE) {
-    echo "Record deleted successfully";
-	} else {
-    echo "Error deleting record: " . $mysqli->error;
-	}
+
+
 
 	mysqli_close($mysqli);
 ?>

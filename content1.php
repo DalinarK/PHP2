@@ -25,7 +25,7 @@
 </section>
 
 <section id = "resultsTable">
-
+	<a href=content2.php?deleteAll=" . $out_id . ">Delete all values</a>"
 
 	<?php
 
